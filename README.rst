@@ -2,7 +2,7 @@
 The Bump calculator
 ################################
 
-
+This code takes a light-curve (jd, magnitude and magnitude error)  and finds the secondary bump in the R-band for type Ia supernovae.
 
 Installation
 ============
