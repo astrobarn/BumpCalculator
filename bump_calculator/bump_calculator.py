@@ -72,6 +72,9 @@ def get_bump(jd, mag, emag, t_max=None, n_bootstrap=15):
     valid = np.logical_and(jd < 100, jd > -30)
     valid = np.logical_and(valid, ~np.isnan(mag))
 
+    if valid.sum() <= 5:
+        raise RuntimeError('Not enough points')
+
     jd = jd[valid]
     mag = mag[valid] - norm
     err = err[valid]
@@ -82,7 +85,7 @@ def get_bump(jd, mag, emag, t_max=None, n_bootstrap=15):
     kernel = GPy.kern.Matern32(1)
 
     bump_time, is_bump, gp_model = _get_bump(x, y, kernel)
-    gp_model = gp_model.copy()   # Save a copy of the model to be reusable
+    gp_model = gp_model.copy()  # Save a copy of the model to be reusable
 
     time_list = []
     is_bump_list = [is_bump]
