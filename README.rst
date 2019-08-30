@@ -11,7 +11,6 @@ Download or clone the repository, enter the directory, and run:
 
     pip install .
 
-It will be available on Pypi soon.
 
 
 Development
